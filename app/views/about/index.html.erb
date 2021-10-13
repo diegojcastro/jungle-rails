@@ -1,0 +1,24 @@
+<h1>About us</h1>
+<p>Founded by <%= Faker::FunnyName.name %>, we strive to <%= Faker::Company.bs %>.</p>
+<h2>Why you should choose us:</h2>
+<ul>
+  <li><%= Faker::Hacker.say_something_smart %></li>
+  <li><%= Faker::Hacker.say_something_smart %></li>
+  <li><%= Faker::Hacker.say_something_smart %></li>
+  <li><%= Faker::Hacker.say_something_smart %></li>
+</ul>
+
+<h2>Our team:</h2>
+<% (0..3).each do %>
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="<%= Faker::Avatar.image(size: "64x64") %>" alt="robot-face">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><%= Faker::FunnyName.name %></h4>
+      <p><%= Faker::Hipster.paragraph(sentence_count: 3) %></p>
+    </div>
+  </div>
+<% end %>
