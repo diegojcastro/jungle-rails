@@ -39,4 +39,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Money.rounding_mode="ROUND_HALF_UP"
+  Money.default_currency = Money::Currency.new("CAD")  
+  Money.rounding_mode = BigDecimal::ROUND_HALF_EVEN
+  Money.locale_backend = nil
 end
