@@ -128,7 +128,7 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.id).to be_present
       expect(@user.name).to eq('Diego')
-      expect(@user.email).to eq('DIEGO4@diego.com')
+      expect(@user.email).to eq('diego4@diego.com')
 
       @user2 = User.new(
         name: 'Billybob',
@@ -157,6 +157,47 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
-    # examples for this class method here
+    it 'should not be able to authenticate a user that does not exist' do
+      @user = User.authenticate_with_credentials('a@b.c', 'hello')
+
+      expect(@user).to be_nil
+    end
+    
+    it 'should be able to authenticate a user that does exist' do
+      @user = User.new(
+        name: 'Diego',
+        last_name: 'Castro',
+        email: 'diego@diego.com',
+        password: 'hello12345goodbye',
+        password_confirmation: 'hello12345goodbye'
+      )
+      @user.save
+      expect(@user.id).to be_present
+      expect(@user.name).to eq('Diego')
+      expect(@user.email).to eq('diego@diego.com')
+
+      @userConfirm = User.authenticate_with_credentials('diego@diego.com', 'hello12345goodbye')
+
+      expect(@userConfirm.name).to eq('Diego')
+    end
+    
+    it 'should be able to authenticate a user with mismatched email capitalization' do
+      @user = User.new(
+        name: 'Diego',
+        last_name: 'Castro',
+        email: 'diego@DIEGO.com',
+        password: 'hello12345goodbye',
+        password_confirmation: 'hello12345goodbye'
+      )
+      @user.save
+      expect(@user.id).to be_present
+      expect(@user.name).to eq('Diego')
+      expect(@user.email).to eq('diego@diego.com')
+
+      @userConfirm = User.authenticate_with_credentials('    DIEGO@diego.com    ', 'hello12345goodbye')
+
+      expect(@userConfirm.name).to eq('Diego')
+    end
+
   end
 end
