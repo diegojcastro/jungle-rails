@@ -1,13 +1,18 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of learning Rails.
+A mini e-commerce application built with Rails 4.2.
 
-## Additional Steps for Apple M1 Machines
+Elements of note:
+1. Add new categories and products from admin page.
+1. Display product name, price, description, image, and a sold out flag if inventory runs out.
+1. Register new users with secure password authentication and unique email.
+1. Integration of Stripe for payments.
 
-1. Make sure that you are runnning Ruby 2.6.6 (`ruby -v`)
-1. Install ImageMagick `brew install imagemagick imagemagick@6 --build-from-source`
-2. Remove Gemfile.lock
-3. Replace Gemfile with version provided [here](https://gist.githubusercontent.com/FrancisBourgouin/831795ae12c4704687a0c2496d91a727/raw/ce8e2104f725f43e56650d404169c7b11c33a5c5/Gemfile)
+## Screenshots
+![Home page showing all products](https://github.com/diegojcastro/jungle-rails/blob/master/docs/products-index.jpg?raw=true)
+![Product Details page showing name, description, quantity, price](https://github.com/diegojcastro/jungle-rails/blob/master/docs/product-show.jpg?raw=true)
+![Shopping Cart view with listed items and total price](https://github.com/diegojcastro/jungle-rails/blob/master/docs/cart-details.jpg?raw=true)
+
 
 ## Setup
 
